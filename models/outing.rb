@@ -23,4 +23,23 @@ class Outing
     SqlRunner.run(sql)
   end
 
+
+  def self.get_many(sql)
+    outings = SqlRunner.run(sql)
+    result = outings.map{|outing| Outing.new(outing)}
+    return result
+  end
+
+  def climber
+    sql = "SELECT * FROM climbers WHERE id = #{@climber_id}"
+    climber = SqlRunner.run(sql)[0]
+    return Climber.new(climber)
+  end
+
+  def route
+    sql = "SELECT * FROM routes WHERE id = #{@route_id}"
+    route = SqlRunner.run(sql).first
+    return Route.new(route)    
+  end
+
 end

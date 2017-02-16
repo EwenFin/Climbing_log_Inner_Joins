@@ -23,4 +23,22 @@ class Climber
     SqlRunner.run(sql)
   end
 
+  def self.get_many(sql)
+    climbers = SqlRunner.run(sql)
+    result = climbers.map{|climber| Climber.new(climber)}
+    return result
+  end
+
+  def routes
+    sql = "SELECT routes.* FROM 
+          routes INNER JOIN outings ON route_id = routes.id
+          WHERE climber_id = #{@id}"
+    return Route.get_many(sql)
+  end
+
+  def update
+    sql ="UPDATE climbers set (name, skill_level) = ('#{@name}', #{@skill_level}) WHERE id =#{@id};"
+    SqlRunner.run(sql)
+  end
+
 end

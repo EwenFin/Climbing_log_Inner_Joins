@@ -23,4 +23,16 @@ class Route
     SqlRunner.run(sql)
   end
 
+  def self.get_many(sql)
+    routes = SqlRunner.run(sql)
+    result = routes.map{|route| Route.new(route)}
+    return result
+  end
+
+  def climbers
+    sql = "SELECT climbers.* FROM 
+          climbers INNER JOIN outings ON climber_id = climbers.id WHERE route_id = #{@id}"
+    return Climber.get_many(sql)
+  end
+
 end
