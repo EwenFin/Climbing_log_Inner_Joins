@@ -46,4 +46,10 @@ class Climber
     SqlRunner.run(sql)
   end
 
+  def self.find_by_id(search_id)
+    sql = "SELECT * FROM climbers where id = #{search_id};"
+    climber = SqlRunner.run(sql).first
+    return Climber.new(climber)
+  end
+
 end

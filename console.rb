@@ -15,7 +15,7 @@ climber1.save
 climber2.save
 climber3.save
 
-route1 = Route.new({ 'name' => 'The Buachille', 'difficulty' => 5})
+route1 = Route.new({ 'name' => 'The Buachaille', 'difficulty' => 5})
 route2 = Route.new({ 'name' => 'Ben Aan', 'difficulty' => 3})
 route3 = Route.new({ 'name' => 'Salisbury Crags', 'difficulty' => 1})
 

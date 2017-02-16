@@ -45,4 +45,10 @@ class Route
     SqlRunner.run(sql)
   end
 
+  def self.find_by_id(search_id)
+    sql = "SELECT * FROM routes where id = #{search_id};"
+    route = SqlRunner.run(sql).first
+    return Route.new(route)
+  end
+
 end
