@@ -35,4 +35,14 @@ class Route
     return Climber.get_many(sql)
   end
 
+  def update
+    sql ="UPDATE routes set (name, difficulty) = ('#{@name}', #{@difficulty}) WHERE id =#{@id};"
+    SqlRunner.run(sql)
+  end
+
+  def delete
+    sql = "DELETE from routes WHERE id =#{@id};"
+    SqlRunner.run(sql)
+  end
+
 end

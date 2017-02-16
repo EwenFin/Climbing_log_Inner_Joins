@@ -41,4 +41,9 @@ class Climber
     SqlRunner.run(sql)
   end
 
+  def delete
+    sql = "DELETE from climbers WHERE id =#{@id};"
+    SqlRunner.run(sql)
+  end
+
 end
